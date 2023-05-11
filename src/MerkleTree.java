@@ -32,10 +32,6 @@ public class MerkleTree {
         }
     }
 
-    private void updateValues() {
-        updateValues(this.root);
-    }
-
     public void insert(Object obj) {
         insert(this.root, obj);
     }
@@ -47,7 +43,7 @@ public class MerkleTree {
                 '}';
     }
 
-    public static class HashNode {
+    private static class HashNode {
         private int value;
         private HashNode parent;
         private HashNode left;
@@ -60,53 +56,6 @@ public class MerkleTree {
         public HashNode(Object obj, HashNode parent) {
             this.value = Objects.hashCode(obj);
             this.parent = parent;
-        }
-
-        public HashNode(Object obj, HashNode left, HashNode right) {
-            this.value = Objects.hashCode(obj);
-            this.left = left;
-            this.right = right;
-        }
-
-        public HashNode(Object obj, HashNode parent, HashNode left, HashNode right) {
-            this.value = Objects.hashCode(obj);
-            this.parent = parent;
-            this.left = left;
-            this.right = right;
-        }
-
-        public HashNode setLeft(HashNode left) {
-            this.left = left;
-            return this;
-        }
-
-        public HashNode setRight(HashNode right) {
-            this.right = right;
-            return this;
-        }
-
-        public boolean hasChildren() {
-            return (getLeft() != null) || (getRight() != null);
-        }
-
-        public boolean bothChildren() {
-            return (getLeft() != null) && (getRight() != null);
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public HashNode getParent() {
-            return parent;
-        }
-
-        public HashNode getLeft() {
-            return left;
-        }
-
-        public HashNode getRight() {
-            return right;
         }
 
         @Override
